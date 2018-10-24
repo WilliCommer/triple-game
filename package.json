@@ -1,0 +1,33 @@
+{
+  "name": "triple-game",
+  "version": "2.0.2",
+  "keywords": [
+    "game"
+  ],
+  "author": "Willi Commer (wcs)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WilliCommer/triple-game.git"
+  },
+  "contributors": [],
+  "description": "Triple Town like game",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "mocha",
+    "bundle": "browserify ./index.js --s module > ./web/js/game-bundle.js",
+    "play": "echo open ./web/index.html or index-react.html"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "inputloop": "^1.1.3"
+  },
+  "bugs": {
+    "url": "https://github.com/WilliCommer/triple-game/issues"
+  },
+  "homepage": "https://github.com/WilliCommer/triple-game#readme",
+  "directories": {
+    "test": "test"
+  }
+}
