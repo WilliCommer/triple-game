@@ -1,7 +1,7 @@
 
 // const triple_game = require('./triple_game');
 const {TRIPLE_FIG,figureProp,figures} = require('../index.js');
-const percentageRandom                = require('../utils').percentageRandom;
+const percentageRandom                = require('../lib/utils').percentageRandom;
 
 module.exports = test_newFigure;
 
