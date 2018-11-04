@@ -3,9 +3,10 @@
  * 
  */
 
-const triple_game          = require('./triple_game.js');
-const board                = require('./board.js');
-const figures              = require('./figures.js');
+const triple_game          = require('./lib/triple_game.js');
+const board                = require('./lib/board.js');
+const figures              = require('./lib/figures.js');
+const config               = require('./lib/config.js');
 
 module.exports = {
   TripleGame:              triple_game.TripleGame,
@@ -17,5 +18,7 @@ module.exports = {
   figureProp:              figures.figureProp,
   figureList:              figures.figureList,
   figureById:              figures.figureById,
-  figureImgUrl:            figures.figureImgUrl  
+  figureImgUrl:            figures.figureImgUrl,
+  configList:              config.configList,
+  defaultConfig:           config.defaultConfig
 };

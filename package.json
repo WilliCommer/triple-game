@@ -1,6 +1,6 @@
 {
   "name": "triple-game",
-  "version": "2.0.2",
+  "version": "2.0.5",
   "keywords": [
     "game"
   ],
@@ -11,12 +11,14 @@
   },
   "contributors": [],
   "description": "Triple Town like game",
-  "main": "main.js",
+  "main": ".lib/index.js",
   "scripts": {
-    "start": "node main.js",
+    "start": "node lib/main.js",
     "test": "mocha",
-    "bundle": "browserify ./index.js --s module > ./web/js/game-bundle.js",
-    "play": "echo open ./web/index.html or index-react.html"
+    "bundle": "browserify ./index.js --s TripleGame > ./build/triple-game-20-bundle.js",
+    "play angular": "demo\\html-angular\\index.html",
+    "play react": "demo\\html-react\\index.html",
+    "docs": "documentation build index.js --format html --theme C:/Users/wcs/AppData/Roaming/npm/node_modules/clean-documentation-theme --o docs"
   },
   "license": "MIT",
   "dependencies": {},
