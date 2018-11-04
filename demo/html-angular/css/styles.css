@@ -1,0 +1,50 @@
+.game-grid {
+   background-color: green;
+   margin-left: 4px;
+   margin-right: auto;
+   padding: 0px;
+   border: 0;
+   border-spacing: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;   
+}
+
+.grid-cell {
+   cursor: default;
+}
+.grid-cell-ok {
+   cursor: grab;
+}
+
+.game-img {
+   margin: 0;
+   border: 0;
+   padding-left: 4px;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;  
+   width: 36px; height: 32px;
+}
+
+.game-img-44 {
+   margin: 0;
+   border: 0;
+   padding-left: 4px;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;  
+   width: 44px; height: 40px;
+
+}
+
+.game-img-64 {
+   margin: 0;
+   border: 0;
+   padding-left: 4px;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;  
+   width: 64px; height: 60px;
+
+}
