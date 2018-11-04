@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon"type="image/x-icon" href="data:image/svg+xml;charset=UTF-8,<svg height=&quot;1024&quot; width=&quot;1024&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><path d=&quot;M950.154 192H73.846C33.127 192 0 225.12699999999995 0 265.846v492.308C0 798.875 33.127 832 73.846 832h876.308c40.721 0 73.846-33.125 73.846-73.846V265.846C1024 225.12699999999995 990.875 192 950.154 192zM576 703.875L448 704V512l-96 123.077L256 512v192H128V320h128l96 128 96-128 128-0.125V703.875zM767.091 735.875L608 512h96V320h128v192h96L767.091 735.875z&quot;/></svg>" />
+  <title>
+    game-events
+  </title>
+  
+  <link crossorigin="anonymous" media="all" integrity="sha512-57B1/u8hPZmZ1VZDgsTj3398brAST9KDu9LFbhOjwXTfrz15sjyxcScwUdkgHK9MEZlOM4e4ScJeEXhYJ66IXg==" rel="stylesheet" href="https://assets-cdn.github.com/assets/github-a293861d7523c471be7783b3b5ffb601.css" />
+
+  <style>
+    .markdown-body {
+          box-sizing: border-box;
+          min-width: 200px;
+          max-width: 980px;
+          margin: 0 auto;
+          padding: 45px;
+     }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous" />
+  
+
+</head>
+
+<body class="markdown-body">
+ <p><a name="game-events"/></p>
+<h3 id="gameevents">Game Events</h3>
+<p><a name="game-events-list"/></p>
+<ul>
+<li><strong>newgame</strong><br />
+emitted by newGame() </li>
+<li><strong>gameover</strong><br />
+emitted when game is over</li>
+<li><strong>saveundo</strong><br />
+emitted by saveGame() (for undo)</li>
+<li><strong>undo</strong><br />
+emitted by undoMove()</li>
+<li><strong>swapreserve</strong><br />
+emitted by swapReserve()</li>
+<li><strong>nextfigure</strong><br />
+emitted when next_figure is changed<br />
+parameter: _fig_</li>
+<li><strong>move_begin</strong><br />
+emitted at start of userMove()<br />
+parameter: _fig_ <em>pos</em></li>
+<li><strong>move_end</strong><br />
+emitted when userMove() successfully finished<br />
+parameter: _score_, _gold_  </li>
+<li><strong>move_fail</strong><br />
+emitted when userMove() failed<br />
+parameter: _fig_ <em>pos</em>  </li>
+<li><strong>animate_begin</strong><br />
+emitted inside userMove() on start of bear and ninja animation  </li>
+<li><strong>animate_end</strong><br />
+emitted inside userMove() at end of bear and ninja animation  </li>
+<li><strong>setfigure</strong><br />
+emitted when a figure is set on board<br />
+parameter: <em>fig</em> <em>pos</em>, <em>score</em>  </li>
+<li><strong>movefigure</strong><br />
+emitted inside animation when a bear or ninja is moved<br />
+parameter: <em>fig</em> <em>pos</em>, <em>newpos</em>  </li>
+</ul>
+<h4 id="samplegameevent">Sample Game Event</h4>
+<p>Event data is a object with at least one property <em>event</em> what is the event name.
+Some event data have more properties, see <em>parameter</em> in the list <a href="#game-events-list">above</a>.</p>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">event</span>: <span class="hljs-string">'movefigure'</span>,
+  fig: <span class="hljs-number">32</span>,
+  pos: {x: <span class="hljs-number">1</span>, y: <span class="hljs-number">1</span>},
+  <span class="hljs-selector-tag">newpos</span>: {<span class="hljs-attribute">x</span>: <span class="hljs-number">3</span>, y: <span class="hljs-number">2</span>}
+}
+</code></pre>
+<h4 id="subscribeevents">Subscribe Events</h4>
+<pre><code class="hljs">game.on(<span class="hljs-string">'movefigure'</span>, myAnimation);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myAnimation</span> <span class="hljs-params">(data)</span> </span>{
+  <span class="hljs-keyword">var</span> tween = <span class="hljs-keyword">new</span> TWEEN.Tween( ...
+}
+</code></pre>
+<p>Call function <strong>on(</strong> <em>eventName</em>, <em>callBackFunction</em> <strong>)</strong>
+to subscribe a event. You also can subscribe all kinds of events when <em>eventName</em> is 'all':</p>
+<pre><code class="hljs">game.<span class="hljs-keyword">on</span>('<span class="hljs-literal">all</span>', myC<span class="hljs-literal">all</span>Back);
+</code></pre>
+<p><a name="game-events-logger"/></p>
+<h4 id="logger">Logger</h4>
+<p>There is an internal event listener, the 'logger'. It will print all events to console. 
+Use <code>game.enableLogger(true)</code> for activation.</p>
+<pre><code class="hljs">event move_begin fig: bush (<span class="hljs-number">2</span>), pos: [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]
+event setfigure fig: bush (<span class="hljs-number">2</span>), pos: [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], score: <span class="hljs-number">20</span>
+event animate_begin
+event animate_end
+event nextfigure fig: grass (<span class="hljs-number">1</span>)
+event move_end fig: bush (<span class="hljs-number">2</span>), pos: [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], score: <span class="hljs-number">20</span>
+</code></pre>
+<p>Use an array of event names to log special events only.</p>
+<pre><code class="hljs">var loggedGameEvents = [<span class="hljs-string">"move_begin"</span>,<span class="hljs-string">"move_end"</span>,<span class="hljs-string">"move_fail"</span>,<span class="hljs-string">"swapreserve"</span>,<span class="hljs-string">"newgame"</span>,<span class="hljs-string">"gameover"</span>,<span class="hljs-string">"undo"</span>]<span class="hljs-comment">;</span>
+
+game.enableLogger( loggedGameEvents )<span class="hljs-comment">;</span>
+</code></pre>
+</body>
+
+</html>
